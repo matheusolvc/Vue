@@ -32,13 +32,26 @@
         </thead>
         <tbody>
           <tr>
-            <td>000001</td>
-            <td>Lani</td>
-            <td>Ovendale</td>
-            <td>lovendale0@w3.org</td>
-            <td>7850 Old Shore Drive</td>
-            <td>United Kingdom</td>
-            <td>University of Plymouth</td>
+            <td data-label="id">000001</td>
+            <td data-label="First name">Lani</td>
+            <td data-label="Last name">Ovendale</td>
+            <td data-label="E-mail">lovendale0@w3.org</td>
+            <td data-label="Street">7850 Old Shore Drive</td>
+            <td data-label="Country">United Kingdom</td>
+            <td class="r-bottom-right" data-label="University">
+              University of Plymouth
+            </td>
+          </tr>
+          <tr>
+            <td data-label="id">000001</td>
+            <td data-label="First name">Lani</td>
+            <td data-label="Last name">Ovendale</td>
+            <td data-label="E-mail">lovendale0@w3.org</td>
+            <td data-label="Street">7850 Old Shore Drive</td>
+            <td data-label="Country">United Kingdom</td>
+            <td class="r-bottom-right" data-label="University">
+              University of Plymouth
+            </td>
           </tr>
         </tbody>
       </table>
@@ -51,9 +64,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped="true">
-:root {
-  --radius: 10px;
-}
 .leads {
   &__title {
     margin: 1.4rem 0;
@@ -64,18 +74,9 @@ export default {}
 table {
   min-width: 100%;
   width: 100%;
-  flex: 1;
-  display: grid;
   border-collapse: collapse;
   box-shadow: 1px 0px 35px #ddd;
-  grid-template-columns:
-    minmax(150px, 1fr)
-    minmax(150px, 1.67fr)
-    minmax(150px, 1.67fr)
-    minmax(150px, 1.67fr)
-    minmax(150px, 3.33fr)
-    minmax(150px, 1.67fr)
-    minmax(150px, 3.33fr);
+  margin-bottom: 50px;
 }
 
 table,
@@ -94,12 +95,6 @@ thead {
 }
 .r-bottom-right {
   border-bottom-right-radius: 10px;
-}
-
-thead,
-tbody,
-tr {
-  display: contents;
 }
 
 th,
@@ -137,7 +132,6 @@ th:last-child {
 }
 
 .resize-handle:hover,
-/* The following selector is needed so the handle is visible during resize even if the mouse isn't over the handle anymore */
 .header--being-resized .resize-handle {
   opacity: 0.5;
 }
@@ -154,5 +148,38 @@ td {
 
 tr:nth-child(even) td {
   background: #f8f6ff;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    display: none;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #3d9df2;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
 }
 </style>
