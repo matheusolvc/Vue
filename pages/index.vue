@@ -3,7 +3,9 @@
   <div class="leads">
     <Logo />
     <!-- <Logo dark-background /> -->
-    <h1 class="leads__title">Leads</h1>
+    <div class="top-row">
+      <h1 class="leads__title">Leads</h1>
+    </div>
     <section>
       <leads-table></leads-table>
     </section>
@@ -24,5 +26,8 @@ export default {
     padding: 1.4rem 0;
     border-top: $border-color 1px solid;
   }
+}
+.top-row {
+  display: flex;
 }
 </style>
